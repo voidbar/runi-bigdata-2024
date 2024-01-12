@@ -1499,11 +1499,11 @@ replica_filtering_protection:
 # Log WARN on any multiple-partition batch size exceeding this value. 5KiB per batch by default.
 # Caution should be taken on increasing the size of this threshold as it can lead to node instability.
 # Min unit: KiB
-batch_size_warn_threshold: 100KiB
+batch_size_warn_threshold: 1000KiB
 
 # Fail any multiple-partition batch exceeding this value. 50KiB (10x warn threshold) by default.
 # Min unit: KiB
-batch_size_fail_threshold: 1000KiB
+batch_size_fail_threshold: 10000KiB
 
 # Log WARN on any batches not of type LOGGED than span across more partitions than this limit
 unlogged_batch_across_partitions_warn_threshold: 10

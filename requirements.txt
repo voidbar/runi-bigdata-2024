@@ -1,0 +1,5 @@
+gdown==4.6.3
+pandas
+matplotlib
+seaborn
+cassandra-driver

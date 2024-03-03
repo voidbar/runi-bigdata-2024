@@ -1,16 +1,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: csv-worker-job
+  name: orchestrator
 spec:
-  parallelism: 5 # Replace with the desired number of parallel pods
   template:
     spec:
-      restartPolicy: OnFailure
       containers:
-        - name: csv-worker
-          image: csv-worker:latest
-          imagePullPolicy: IfNotPresent 
+        - name: orchestrator
+          image: orchestrator:latest 
+          imagePullPolicy: IfNotPresent
           env:
             - name: DATABASE_HOST
               value: "postgres"
@@ -20,3 +18,4 @@ spec:
               value: "rabbitmq"
             - name: RABBITMQ_PORT
               value: "5672"
+      restartPolicy: OnFailure

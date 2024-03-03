@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: cassandra
-        image: cassandra-custom:latest # Make sure this matches your local image
-        imagePullPolicy: IfNotPresent # Or use Never for strictly local development
+        image: cassandra-custom:latest 
+        imagePullPolicy: IfNotPresent 
 
 ---
 apiVersion: v1

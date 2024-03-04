@@ -1,1 +1,4 @@
 pika
+loguru
+pandas
+cassandra-driver

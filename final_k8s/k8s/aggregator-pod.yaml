@@ -3,12 +3,16 @@ kind: Pod
 metadata:
   name: aggregator
 spec:
+  restartPolicy: OnFailure
   containers:
     - name: aggregator
       image: aggregator:latest 
       imagePullPolicy: IfNotPresent
       env:
         - name: DATABASE_HOST
-          value: "postgres"
-        - name: DATABASE_PASSWORD
-          value: "yourpassword"
+          value: "cassandra"
+        - name: RABBITMQ_HOST
+          value: "rabbitmq"
+        - name: RABBITMQ_PORT
+          value: "5672"
+

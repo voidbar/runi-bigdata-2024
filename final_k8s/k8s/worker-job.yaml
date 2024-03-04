@@ -3,7 +3,9 @@ kind: Job
 metadata:
   name: ingestion-worker-job
 spec:
-  parallelism: 5 # Replace with the desired number of parallel pods
+  parallelism: 5
+  backoffLimit: 15 
+
   template:
     spec:
       restartPolicy: OnFailure
@@ -13,9 +15,7 @@ spec:
           imagePullPolicy: IfNotPresent 
           env:
             - name: DATABASE_HOST
-              value: "postgres"
-            - name: DATABASE_PASSWORD
-              value: "yourpassword"
+              value: "cassandra"
             - name: RABBITMQ_HOST
               value: "rabbitmq"
             - name: RABBITMQ_PORT

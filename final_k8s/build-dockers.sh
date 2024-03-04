@@ -10,9 +10,9 @@ cd orchestrator
 docker build -q -t orchestrator:latest .
 cd ..
 
-echo "Building CSV Worker Image..."
-cd csv-worker
-docker build -q -t csv-worker:latest .
+echo "Building Ingestion Worker Image..."
+cd ingestion
+docker build -q -t ingestion-worker:latest .
 cd ..
 
 echo "Building Aggregator Image..."

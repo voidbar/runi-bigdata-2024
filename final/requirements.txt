@@ -5,3 +5,4 @@ seaborn
 cassandra-driver
 folium
 kaggle
+warnings

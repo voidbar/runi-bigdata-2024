@@ -2,3 +2,5 @@ pika
 loguru
 pandas
 cassandra-driver
+matplotlib
+seaborn

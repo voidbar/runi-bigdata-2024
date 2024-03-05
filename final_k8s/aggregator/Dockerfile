@@ -12,3 +12,4 @@ ENV PYTHONUNBUFFERED=1
 
 # Run aggregator.py when the container launches
 CMD ["python", "./aggregator.py"]
+

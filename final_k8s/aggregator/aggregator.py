@@ -4,10 +4,9 @@ import pika
 import pandas as pd
 from loguru import logger
 from cassandra.cluster import Cluster
-from cassandra.query import BatchStatement
-from cassandra.query import SimpleStatement
-import re
-
+import threading
+import http.server
+import socketserver
 
 cassandra_host = os.getenv('DATABASE_HOST', 'localhost')
 
@@ -17,7 +16,6 @@ rabbitmq_user = os.getenv('RABBITMQ_USER', 'guest')
 rabbitmq_password = os.getenv('RABBITMQ_PASSWORD', 'guest')
 rabbitmq_credentials = pika.PlainCredentials(rabbitmq_user, rabbitmq_password)
 rabbitmq_connection_params = pika.ConnectionParameters(host=rabbitmq_host, port=rabbitmq_port, credentials=rabbitmq_credentials)
-
 
 def get_rabbitmq_connection():
     return pika.BlockingConnection(rabbitmq_connection_params)
@@ -74,6 +72,19 @@ def start_consuming():
     logger.info('Aggregation is waiting for messages')
     channel.start_consuming()
 
+def start_http_server():
+    PORT = 9090
+    directory = "/data"
+    Handler = http.server.SimpleHTTPRequestHandler
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    os.chdir(directory)
+    
+    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+        logger.info(f"Serving /data directory at http://localhost:{PORT}")
+        httpd.serve_forever()
 
 if __name__ == '__main__':
+    http_server_thread = threading.Thread(target=start_http_server, daemon=True)
+    http_server_thread.start()
     start_consuming()

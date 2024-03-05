@@ -1,4 +1,7 @@
-dataset.zip
-venv
-AirPollutionSeoul
+﻿.lh/
+**/persistent_data/
+*.csv
+*.zip
+venv/
+AirPollutionSeoul/
 persistent_data

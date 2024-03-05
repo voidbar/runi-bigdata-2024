@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: orchestrator
+spec:
+  template:
+    spec:
+      containers:
+        - name: orchestrator
+          image: orchestrator:latest 
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DATABASE_HOST
+              value: "cassandra"
+            - name: RABBITMQ_HOST
+              value: "rabbitmq"
+            - name: RABBITMQ_PORT
+              value: "5672"
+      restartPolicy: OnFailure

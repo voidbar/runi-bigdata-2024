@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ingestion-worker-job
+spec:
+  parallelism: 5
+  backoffLimit: 15 
+
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: ingestion-worker
+          image: ingestion-worker:latest
+          imagePullPolicy: IfNotPresent 
+          env:
+            - name: DATABASE_HOST
+              value: "cassandra"
+            - name: RABBITMQ_HOST
+              value: "rabbitmq"
+            - name: RABBITMQ_PORT
+              value: "5672"

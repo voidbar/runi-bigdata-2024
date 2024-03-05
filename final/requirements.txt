@@ -1,7 +1,0 @@
-gdown
-pandas
-matplotlib
-seaborn
-cassandra-driver
-folium
-kaggle

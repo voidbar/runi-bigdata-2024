@@ -1,0 +1,12 @@
+Top 10 emojis used by Katy Perry based on total_interactions are:
+    emoji     author  total_interactions
+163     🏼  katyperry             1465837
+180     💅  katyperry              851393
+228     🙏  katyperry              772808
+183     🏻  katyperry              659090
+214     😩  katyperry              589071
+146     💁  katyperry              586518
+182     🙌  katyperry              568512
+40      😳  katyperry              495342
+134     🔥  katyperry              484572
+95      👀  katyperry              482220
